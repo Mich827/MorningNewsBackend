@@ -11,8 +11,13 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 const cors = require('cors');
-app.use(cors());
-
+//app.use(cors());
+app.use(cors({
+  origin: "https://morning-news-frontend-xi.vercel.app", // Remplace par l'URL exacte de ton frontend Next.js
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+  credentials: true, // Autorise les cookies si besoin
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
